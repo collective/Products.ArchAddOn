@@ -1,0 +1,17 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal">
+
+  <body>
+
+      <metal:define define-macro="view"></metal:define>
+
+    <metal:define define-macro="edit">
+      <div tal:content="structure python:widget.Description(here)">[desc]</div>
+    </metal:define>
+
+    <metal:define define-macro="search"></metal:define>
+
+  </body>
+  
+</html>
+

@@ -1,0 +1,20 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal">
+
+  <body>
+
+    <metal:view_macro define-macro="view">
+      <a tal:content="structure accessor" tal:attributes="href accessor">Link</a>
+    </metal:view_macro>
+
+    <metal:define define-macro="edit">
+        <div metal:use-macro="here/widgets/string/macros/edit"></div>
+    </metal:define>
+
+    <metal:define define-macro="search">
+        <div metal:use-macro="here/widgets/string/macros/edit"></div>
+    </metal:define>
+
+  </body>
+  
+</html>
