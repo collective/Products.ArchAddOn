@@ -1,0 +1,14 @@
+README.txt
+setup.cfg
+setup.py
+Products/__init__.py
+Products.ArchAddOn.egg-info/PKG-INFO
+Products.ArchAddOn.egg-info/SOURCES.txt
+Products.ArchAddOn.egg-info/dependency_links.txt
+Products.ArchAddOn.egg-info/entry_points.txt
+Products.ArchAddOn.egg-info/namespace_packages.txt
+Products.ArchAddOn.egg-info/not-zip-safe
+Products.ArchAddOn.egg-info/requires.txt
+Products.ArchAddOn.egg-info/top_level.txt
+Products/ArchAddOn/__init__.py
+Products/ArchAddOn/tests.py
