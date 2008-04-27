@@ -12,6 +12,7 @@ from config import ADD_CONTENT_PERMISSION, PROJECTNAME, SKINS_DIR, GLOBALS
 registerDirectory(SKINS_DIR, GLOBALS)
 
 def initialize(context):
+    """Initializer called when used as a Zope 2 product."""
     validation.register(FormattedUSPhoneValidator('isFormattedUSPhone'))
     validation.register(USAddressValidator('isUSAddress'))
     validation.register(LinesAllFloatValidator('areLinesFloat'))

@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: Products.ArchAddOn
-Version: 0.1dev
+Version: 0.1dev-r63682
 Summary: Straightforward toolbox of field types, widgets, and validators for Archetypes.
 Home-page: https://svn.plone.org/svn/collective/Products.ArchAddOn
 Author: Joel Burton
