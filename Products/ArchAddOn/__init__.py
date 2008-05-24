@@ -6,6 +6,11 @@ import os, os.path
 
 from Products.validation import validation
 from Validators import *
+validation.register(FormattedUSPhoneValidator('isFormattedUSPhone'))
+validation.register(USAddressValidator('isUSAddress'))
+validation.register(LinesAllFloatValidator('areLinesFloat'))
+validation.register(LinesAllIntValidator('areLinesInt'))
+validation.register(SimpleDataGridValidator('isValidGrid'))
 
 from config import ADD_CONTENT_PERMISSION, PROJECTNAME, SKINS_DIR, GLOBALS
 
@@ -13,11 +18,6 @@ registerDirectory(SKINS_DIR, GLOBALS)
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
-    validation.register(FormattedUSPhoneValidator('isFormattedUSPhone'))
-    validation.register(USAddressValidator('isUSAddress'))
-    validation.register(LinesAllFloatValidator('areLinesFloat'))
-    validation.register(LinesAllIntValidator('areLinesInt'))
-    validation.register(SimpleDataGridValidator('isValidGrid'))
     
     ##Import Types here to register them
     # import SomeType
