@@ -5,11 +5,11 @@ phone_pattern = re.compile( '\(\d\d\d\) \d\d\d-\d\d\d\d' )
 
 class FormattedUSPhoneValidator:
     __implements__ = (ivalidator,)
-    
+
     def __init__(self, name):
         self.name = name
         return None
-    
+
     def __call__(self, value, *args, **kwargs):
         if not phone_pattern.match(value):
             return """Not in form: (999) 555-1212"""
@@ -26,14 +26,14 @@ class USAddressValidator:
         if not ( "\n" in value or "\r" in value ):
             return """Not a valid US addresss."""
         return 1
-    
+
 class LinesAllFloatValidator:
     __implements__= (ivalidator,)
-    
+
     def __init__(self, name):
         self.name = name
         return None
-    
+
     def __call__(self, value, *args, **kwargs):
         for i in value:
             try:
@@ -41,14 +41,14 @@ class LinesAllFloatValidator:
             except:
                 return """Not a valid floating-point number: %s""" % i
         return 1
-    
+
 class LinesAllIntValidator:
     __implements__= (ivalidator,)
-    
+
     def __init__(self, name):
         self.name = name
         return None
-    
+
     def __call__(self, value, *args, **kwargs):
         for i in value:
             try:
@@ -56,17 +56,17 @@ class LinesAllIntValidator:
             except:
                 return """Not a valid integer: %s""" % i
         return 1
-    
+
 class SimpleDataGridValidator:
     """Ensure a data grid field has the correct number of columns, if a value
     is set as a field property.
     """
     __implements__= (ivalidator,)
-    
+
     def __init__(self, name):
         self.name = name
         return None
-    
+
     def __call__(self, value, *args, **kwargs):
         field = kwargs['field']
         cols = field.columns
@@ -77,5 +77,5 @@ class SimpleDataGridValidator:
         return 1
 
 __all__ = ( 'FormattedUSPhoneValidator', 'USAddressValidator',
-       'LinesAllFloatValidator', 'LinesAllIntValidator', 
+       'LinesAllFloatValidator', 'LinesAllIntValidator',
        'SimpleDataGridValidator' )

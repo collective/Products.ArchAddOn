@@ -8,7 +8,7 @@ try:
     from Products.CMFCore import permissions as CMFCorePermissions
 except ImportError:
     from Products.CMFCore import CMFCorePermissions
-    
+
 from AccessControl import ClassSecurityInfo
 
 import string
@@ -58,12 +58,12 @@ class SimpleDataGridField(LinesField):
     If strip_whitespace is True, the individual cells in the grid will
     be stripped of leading and trailing whitespace (that is, whitespace
     added around the delimiter).
-    
+
     If column_names is set to a tuple or list of strings, it gives the names
     of columns in the grid. The getDataGridRow script and the getRow() method
     will return a dict using these column names as keys rather than using the
     column numbers (starting from zero).
-    
+
     Fields are just strings, with no internal validation, etc.
     """
     _properties = LinesField._properties.copy()
@@ -73,7 +73,7 @@ class SimpleDataGridField(LinesField):
                          'validators':('isValidGrid',),
                          'strip_whitespace':True,
                          'delimiter':'|' })
-                         
+
     def get(self, instance, **kwargs):
         data = LinesField.get(self, instance, **kwargs)
         return data
@@ -114,7 +114,7 @@ class SimpleDataGridField(LinesField):
         for d in data:
             col.append(self._split(d)[column])
         return tuple(col)
-        
+
     def lookup(self, instance, key, column, keyCol=0, **kwargs):
         """Look for the given key in the column with index given by keyCol,
         and return the value stored in the given column. Returns None if the
@@ -139,19 +139,19 @@ class SimpleDataGridField(LinesField):
             cols = self._split(d)
             lst.add(cols[keyCol], cols[valueCol])
         return lst
-        
+
     def _strip(self, value):
         """Strip whitespace from a value if applicable"""
         if self.strip_whitespace:
             return value.strip()
         else:
             return value
-        
+
     def _split(self, row):
         """Return a row split on the delimiter, optionally stripped
         """
         return [self._strip(r) for r in row.split(self.delimiter)]
-        
+
     def _getColName(self, column):
         """Get the name of the given column. If column_names is set, use
         that if it contains a value. Else, use the integral column name.
@@ -160,7 +160,7 @@ class SimpleDataGridField(LinesField):
             return self.column_names[column]
         else:
             return column
-        
+
 #-------- dyndoc helper classes
 
 from AccessControl import getSecurityManager
@@ -231,7 +231,7 @@ class DynamicField(TextField):
         except:
             setattr(instance, self.getName(), ddPageTemplate())
             return getattr(instance, self.getName()).__of__(instance)
-    
+
     def getRaw(self, instance, **kwargs):
         """Get raw"""
 
@@ -242,12 +242,12 @@ class DynamicField(TextField):
         # both not sure how to handle __init__ properly, and
         # addXXXX function would make user of this fieldtype have to
         # create one for every class that used this field type.
-        
+
         if not hasattr(instance, self.getName()):
             setattr(instance, self.getName(), ddPageTemplate())
-        else:   
+        else:
             return self.get_unwrapped(instance).read()
-        
+
     def set(self, instance, value, **kwargs):
         """
           Edit the document
@@ -258,8 +258,8 @@ class DynamicField(TextField):
     def get(self, instance, mimetype=None, raw=0, **kwargs):
         """Return"""
         pt = self.get_unwrapped(instance)
-        
-        if raw: 
+
+        if raw:
             # when would this happen? not sure, copying from TextField
             return pt.read()
 

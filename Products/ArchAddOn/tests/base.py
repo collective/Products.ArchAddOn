@@ -24,9 +24,9 @@ class ArchAddOnTestCase(PloneTestCase):
     provide specific set-up and tear-down operations, or provide convenience
     methods.
     """
-    
+
 class ArchAddOnFunctionalTestCase(FunctionalTestCase):
-    """Base class for functional integration tests for the 'ArchAddOn' product. 
-    This may provide specific set-up and tear-down operations, or provide 
+    """Base class for functional integration tests for the 'ArchAddOn' product.
+    This may provide specific set-up and tear-down operations, or provide
     convenience methods.
     """

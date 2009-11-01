@@ -9,7 +9,7 @@
 
 # Looks for the given data grid field in the current context and its
 # acquisition parents. Once found, look up the given key in the given column
-# (defaults to 0 - the first column) and return the row. 
+# (defaults to 0 - the first column) and return the row.
 
 # Returns a dict. If the field has the column_names property set, use these
 # as the dict keys. Else use the column index as keys, starting from 0.

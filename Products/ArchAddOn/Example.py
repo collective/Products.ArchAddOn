@@ -9,8 +9,8 @@ Schema = BaseSchema.copy() + Schema((
     EmailField( 'email' ),
     InstructionField( 'instruction', widget=InstructionWidget( description='This is an instruction' )),
 
-    #XXX: This breaks the example so better to fix or not include. 
-    #DynamicField( 'dynamic' ), 
+    #XXX: This breaks the example so better to fix or not include.
+    #DynamicField( 'dynamic' ),
 
     SimpleDataGridField( 'datagrid',
         column_names=('col1', 'col2', 'col3'),
