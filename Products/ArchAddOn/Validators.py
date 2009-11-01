@@ -1,7 +1,8 @@
 from Products.validation.interfaces import ivalidator
 import re
 
-phone_pattern = re.compile( '\(\d\d\d\) \d\d\d-\d\d\d\d' )
+phone_pattern = re.compile('\(\d\d\d\) \d\d\d-\d\d\d\d')
+
 
 class FormattedUSPhoneValidator:
     __implements__ = (ivalidator,)
@@ -15,6 +16,7 @@ class FormattedUSPhoneValidator:
             return """Not in form: (999) 555-1212"""
         return 1
 
+
 class USAddressValidator:
     __implements__ = (ivalidator,)
 
@@ -23,12 +25,13 @@ class USAddressValidator:
         return None
 
     def __call__(self, value, *args, **kwargs):
-        if not ( "\n" in value or "\r" in value ):
+        if not ("\n" in value or "\r" in value):
             return """Not a valid US addresss."""
         return 1
 
+
 class LinesAllFloatValidator:
-    __implements__= (ivalidator,)
+    __implements__ = (ivalidator,)
 
     def __init__(self, name):
         self.name = name
@@ -42,8 +45,9 @@ class LinesAllFloatValidator:
                 return """Not a valid floating-point number: %s""" % i
         return 1
 
+
 class LinesAllIntValidator:
-    __implements__= (ivalidator,)
+    __implements__ = (ivalidator,)
 
     def __init__(self, name):
         self.name = name
@@ -57,11 +61,12 @@ class LinesAllIntValidator:
                 return """Not a valid integer: %s""" % i
         return 1
 
+
 class SimpleDataGridValidator:
     """Ensure a data grid field has the correct number of columns, if a value
     is set as a field property.
     """
-    __implements__= (ivalidator,)
+    __implements__ = (ivalidator,)
 
     def __init__(self, name):
         self.name = name
@@ -76,6 +81,7 @@ class SimpleDataGridValidator:
                     return "Each row must have exactly %d fields" % cols
         return 1
 
-__all__ = ( 'FormattedUSPhoneValidator', 'USAddressValidator',
-       'LinesAllFloatValidator', 'LinesAllIntValidator',
-       'SimpleDataGridValidator' )
+
+__all__ = ('FormattedUSPhoneValidator', 'USAddressValidator',
+           'LinesAllFloatValidator', 'LinesAllIntValidator',
+           'SimpleDataGridValidator')

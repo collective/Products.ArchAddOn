@@ -12,8 +12,11 @@ ptc.setupPloneSite()
 
 import Products.ArchAddOn
 
+
 class TestCase(ptc.PloneTestCase):
+
     class layer(PloneSite):
+
         @classmethod
         def setUp(cls):
             fiveconfigure.debug_mode = True

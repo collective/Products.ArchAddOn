@@ -1,57 +1,52 @@
-from Products.Archetypes.Field import *
-from Products.Archetypes.Widget import *
-from Products.Archetypes.Registry import setSecurity
+from Products.Archetypes import atapi
 from Products.Archetypes.public import DisplayList
-from Widgets import *
+from Widgets import LinkWidget, USPhoneWidget, EmailWidget, AddressWidget, \
+    InstructionWidget, SimpleDataGridWidget
 
-try:
-    from Products.CMFCore import permissions as CMFCorePermissions
-except ImportError:
-    from Products.CMFCore import CMFCorePermissions
 
-from AccessControl import ClassSecurityInfo
-
-import string
-try:
-    from validation import validation
-except ImportError:
-    from Products.validation import validation
-
-class USAddressField(TextField):
+class USAddressField(atapi.TextField):
     """A field that stores strings"""
-    _properties = TextField._properties.copy()
-    _properties.update({ 'widget':AddressWidget
-                        , 'validators':('isUSAddress',)
-                        })
+    _properties = atapi.TextField._properties.copy()
+    _properties.update(
+        {'widget': AddressWidget,
+         'validators': ('isUSAddress',),
+         })
 
-class LinkField(StringField):
+
+class LinkField(atapi.StringField):
     """A field that stores strings"""
-    _properties = StringField._properties.copy()
-    _properties.update({ 'widget':LinkWidget
-                        ,'validators':('isURL',)
-                        })
+    _properties = atapi.StringField._properties.copy()
+    _properties.update(
+        {'widget': LinkWidget,
+         'validators': ('isURL',),
+         })
 
-class USPhoneField(StringField):
+
+class USPhoneField(atapi.StringField):
     """A field that stores strings"""
-    _properties = StringField._properties.copy()
-    _properties.update({ 'widget':USPhoneWidget,
-        'validators':('isFormattedUSPhone',),
-        })
+    _properties = atapi.StringField._properties.copy()
+    _properties.update(
+        {'widget': USPhoneWidget,
+         'validators': ('isFormattedUSPhone',),
+         })
 
-class EmailField(StringField):
+
+class EmailField(atapi.StringField):
     """A field that stores strings"""
-    _properties = StringField._properties.copy()
-    _properties.update({ 'widget':EmailWidget
-                        , 'validators':('isEmail',)
-                        })
+    _properties = atapi.StringField._properties.copy()
+    _properties.update(
+        {'widget': EmailWidget,
+         'validators': ('isEmail',),
+         })
 
-class InstructionField(ObjectField):
+
+class InstructionField(atapi.ObjectField):
     """Just help"""
-    _properties = ObjectField._properties.copy()
-    _properties.update({ 'widget':InstructionWidget })
+    _properties = atapi.ObjectField._properties.copy()
+    _properties.update({'widget': InstructionWidget})
 
 
-class SimpleDataGridField(LinesField):
+class SimpleDataGridField(atapi.LinesField):
     """A lines field with embedded vertical bars for fields. If the
     columns property is set, the isValidGrid validator will ensure that
     the entered text has exactly that number of columns for each row.
@@ -66,16 +61,18 @@ class SimpleDataGridField(LinesField):
 
     Fields are just strings, with no internal validation, etc.
     """
-    _properties = LinesField._properties.copy()
-    _properties.update({ 'widget':SimpleDataGridWidget,
-                         'columns':None,
-                         'column_names':None,
-                         'validators':('isValidGrid',),
-                         'strip_whitespace':True,
-                         'delimiter':'|' })
+    _properties = atapi.LinesField._properties.copy()
+    _properties.update(
+        {'widget': SimpleDataGridWidget,
+         'columns': None,
+         'column_names': None,
+         'validators': ('isValidGrid',),
+         'strip_whitespace': True,
+         'delimiter': '|',
+         })
 
     def get(self, instance, **kwargs):
-        data = LinesField.get(self, instance, **kwargs)
+        data = atapi.LinesField.get(self, instance, **kwargs)
         return data
 
     def getAsGrid(self, instance, **kwargs):
@@ -92,9 +89,10 @@ class SimpleDataGridField(LinesField):
 
     def getRow(self, instance, key, keyCol=0, **kwargs):
         """Get a row matching the given key, looked up in the given column.
-        Returns a dict. If the column_names property is not set, the keys of the
-        dict are the integral column indexes. If it is set, the relevant column
-        names are used as keys instead.
+
+        Returns a dict. If the column_names property is not set, the
+        keys of the dict are the integral column indexes. If it is
+        set, the relevant column names are used as keys instead.
         """
         data = self.get(instance, **kwargs)
         for d in data:
@@ -164,18 +162,16 @@ class SimpleDataGridField(LinesField):
 #-------- dyndoc helper classes
 
 from AccessControl import getSecurityManager
-try:
-    from zope.tal.taldefs import TALExpressionError as TALESError
-except ImportError:  # BBB is still supporting the old way needed ???
-    from TAL.TALDefs import TALESError
+from zope.tal.taldefs import TALExpressionError as TALESError
 
 from Products.PageTemplates import PageTemplate
 from Products.PageTemplates.ZopePageTemplate import SecureModuleImporter
 from Acquisition import Implicit, aq_parent, aq_inner
 from Persistence import Persistent
-from ExtensionClass import Base
+
 
 class ddPageTemplate(PageTemplate.PageTemplate, Implicit, Persistent):
+
     def pt_getContext(self):
         root = self.getPhysicalRoot()
         template = aq_parent(self)
@@ -210,10 +206,14 @@ class ddPageTemplate(PageTemplate.PageTemplate, Implicit, Persistent):
 #    def __of__( self, doc):
 #        return doc.get_pt().macros
 
-class DynamicField(TextField):
+
+class DynamicField(atapi.TextField):
     """Just help"""
-    _properties = ObjectField._properties.copy()
-    _properties.update({ 'widget':TextAreaWidget, 'default_output_type':'text/html' })
+    _properties = atapi.ObjectField._properties.copy()
+    _properties.update(
+        {'widget': atapi.TextAreaWidget,
+         'default_output_type': 'text/html',
+         })
 
     #macros = Macros()
     #security.declareProtected(CMFCorePermissions.View, 'macros')
@@ -278,12 +278,5 @@ class DynamicField(TextField):
             security.removeContext(self)
 
 
-__all__ = ( 'USAddressField'
-          , 'LinkField'
-          , 'USPhoneField'
-          , 'EmailField'
-          , 'InstructionField'
-          , 'DynamicField'
-          , 'SimpleDataGridField'
-          )
-
+__all__ = ('USAddressField', 'LinkField', 'USPhoneField', 'EmailField',
+           'InstructionField', 'DynamicField', 'SimpleDataGridField')
