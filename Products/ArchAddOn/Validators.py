@@ -1,11 +1,12 @@
-from Products.validation.interfaces import ivalidator
+from zope.interface import implements
+from Products.validation.interfaces.IValidator import IValidator
 import re
 
 phone_pattern = re.compile('\(\d\d\d\) \d\d\d-\d\d\d\d')
 
 
 class FormattedUSPhoneValidator:
-    __implements__ = (ivalidator,)
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name
@@ -18,7 +19,7 @@ class FormattedUSPhoneValidator:
 
 
 class USAddressValidator:
-    __implements__ = (ivalidator,)
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name
@@ -31,7 +32,7 @@ class USAddressValidator:
 
 
 class LinesAllFloatValidator:
-    __implements__ = (ivalidator,)
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name
@@ -47,7 +48,7 @@ class LinesAllFloatValidator:
 
 
 class LinesAllIntValidator:
-    __implements__ = (ivalidator,)
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name
@@ -66,7 +67,7 @@ class SimpleDataGridValidator:
     """Ensure a data grid field has the correct number of columns, if a value
     is set as a field property.
     """
-    __implements__ = (ivalidator,)
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name
