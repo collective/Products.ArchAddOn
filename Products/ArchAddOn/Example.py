@@ -3,7 +3,8 @@ from Fields import USAddressField, LinkField, USPhoneField, EmailField, \
     InstructionField, SimpleDataGridField
 # Untested due to problems:
 # from Fields import DynamicField
-from Widgets import InstructionWidget, SimpleDataGridWidget
+from Products.ArchAddOn.Widgets import InstructionWidget, SimpleDataGridWidget
+from Products.ArchAddOn.config import PROJECTNAME
 
 
 Schema = atapi.BaseSchema.copy() + atapi.Schema((
@@ -40,4 +41,4 @@ class ArchAddOnExample(atapi.BaseContent):
     content_icon = 'document_icon.gif'
     archetypes_name = 'ArchAddOn Example'
 
-atapi.registerType(ArchAddOnExample)
+atapi.registerType(ArchAddOnExample, PROJECTNAME)
