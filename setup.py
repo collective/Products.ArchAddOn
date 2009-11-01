@@ -9,7 +9,7 @@ readmefile = open(os.path.join('Products', 'ArchAddOn', 'README.txt'))
 readme = readmefile.read().strip()
 readmefile.close()
 
-historyfile = open(os.path.join('Products', 'ArchAddOn', 'HISTORY.txt'))
+historyfile = open(os.path.join('docs', 'HISTORY.txt'))
 history = historyfile.read().strip()
 historyfile.close()
 
