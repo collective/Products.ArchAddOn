@@ -35,7 +35,7 @@ setup(name='Products.ArchAddOn',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'Plone>=4.0dev',
       ],
       entry_points="""
       # -*- Entry points: -*-
