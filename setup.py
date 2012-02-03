@@ -5,7 +5,7 @@ versionfile = open(os.path.join('Products', 'ArchAddOn', 'version.txt'))
 version = versionfile.read().strip()
 versionfile.close()
 
-readmefile = open(os.path.join('Products', 'ArchAddOn', 'README.txt'))
+readmefile = open('README.rst')
 readme = readmefile.read().strip()
 readmefile.close()
 
