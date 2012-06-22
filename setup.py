@@ -14,22 +14,24 @@ history = historyfile.read().strip()
 historyfile.close()
 
 long_description = readme + "\n\n" + history
+description = "Straightforward toolbox of field types, widgets, and"
+description += " validators for Archetypes."
 
 setup(name='Products.ArchAddOn',
       version=version,
-      description="Straightforward toolbox of field types, widgets, and validators for Archetypes.",
+      description=description,
       long_description=long_description,
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='',
+      keywords='archetypes plone widget',
       author='Joel Burton',
       author_email='joel@joelburton.com',
       maintainer='Alex Clark',
       maintainer_email='aclark@aclark.net',
-      url='https://svn.plone.org/svn/collective/Products.ArchAddOn',
+      url='https://github.com/collective/Products.ArchAddOn/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
