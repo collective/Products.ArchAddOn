@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
 import os
 
-versionfile = open(os.path.join('Products', 'ArchAddOn', 'version.txt'))
+#versionfile = open(os.path.join('Products', 'ArchAddOn', 'version.txt'))
+version = '1.7'
 version = versionfile.read().strip()
 versionfile.close()
 
