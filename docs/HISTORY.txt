@@ -1,10 +1,10 @@
 Changelog
 =========
 
-1.7 (2012-06-22)
+1.7 (2012-06-25)
 ----------------
 
-- Very minimal package cleanup
+- Package cleanup
   [aclark]
 
 1.6 (2010-04-09)
