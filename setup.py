@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 import os
 
 #versionfile = open(os.path.join('Products', 'ArchAddOn', 'version.txt'))
+#version = versionfile.read().strip()
+#versionfile.close()
 version = '1.7'
-version = versionfile.read().strip()
-versionfile.close()
 
 readmefile = open('README.rst')
 readme = readmefile.read().strip()
