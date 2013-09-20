@@ -17,7 +17,7 @@
 obj = context
 
 while obj is not None:
-    if hasattr(obj, 'Schema') and obj.Schema().has_key(fieldName):
+    if hasattr(obj, 'Schema') and fieldName in obj.Schema():
         # Found it
         break
     else:
@@ -28,6 +28,6 @@ while obj is not None:
             break
 
 if obj is None:
-    raise AttributeError, "Field %s not found" % (fieldName,)
+    raise AttributeError("Field %s not found" % fieldName)
 
 return obj.getWrappedField(fieldName).getRow(obj, key, keyColumn)
