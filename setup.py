@@ -1,9 +1,6 @@
 from setuptools import setup, find_packages
 import os
 
-#versionfile = open(os.path.join('Products', 'ArchAddOn', 'version.txt'))
-#version = versionfile.read().strip()
-#versionfile.close()
 version = '1.7'
 
 readmefile = open('README.rst')
@@ -23,10 +20,14 @@ setup(name='Products.ArchAddOn',
       description=description,
       long_description=long_description,
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+          "Framework :: Plone",
+          "Framework :: Plone :: 4.0",
+          "Framework :: Plone :: 4.1",
+          "Framework :: Plone :: 4.2",
+          "Framework :: Plone :: 4.3",
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          ],
       keywords='archetypes plone widget',
       author='Joel Burton',
       author_email='joel@joelburton.com',
@@ -40,9 +41,6 @@ setup(name='Products.ArchAddOn',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Plone>=4.0dev',
+          'Products.CMFPlone>=4.0dev',
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
       )
